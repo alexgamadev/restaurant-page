@@ -1,36 +1,6 @@
-const containerElement = document.createElement("div");
-containerElement.classList.add("menu-container");
+import {items} from './itemsdata';
 
-const menuTitle = document.createElement("h3");
-menuTitle.classList.add("menu-title");
-
-const menuContent = document.createElement("div");
-menuContent.createElement("menu-content");
-
-class menuItem {
-    #name;
-    #description;
-    #price;
-    constructor(name, desc, price) {
-        this.name = name;
-        this.description = desc;
-        this.price = price;
-    }
-
-    get name(){
-        return this.#name;
-    }
-
-    get description() {
-        return this.#description;
-    }
-
-    get price() {
-        return this.#price;
-    }
-}
-
-function createCategory(name, category, items) {
+function createCategory(name, items) {
     const menuCategory = document.createElement("div");
     menuCategory.classList.add("menu-category");
 
@@ -40,10 +10,64 @@ function createCategory(name, category, items) {
     const categoryList = document.createElement("ul");
     categoryList.classList.add("menu-list");
 
+    menuCategory.appendChild(categoryName);
+    menuCategory.appendChild(categoryList);
 
-    category.appendChild()
+    items.forEach(item => {
+        categoryList.appendChild(createItemElement(categoryList, item));
+    });
+
+    return menuCategory;
 }
 
-function createItemElement(item) {
+function createItemElement(itemContainer, item) {
+    const itemElement = document.createElement("li");
+    itemElement.classList.add("menu-item");
+    //Create elements
+    const itemName = document.createElement("h4");
+    itemName.classList.add("item-name");
+    const itemDesc = document.createElement("span");
+    itemDesc.classList.add("item-desc");
+    const itemPrice = document.createElement("span");
+    itemPrice.classList.add("item-price");
 
+    //Add element content
+    itemName.textContent = item.getName();
+    itemDesc.textContent = item.getDescription();
+    itemPrice.textContent = item.getPrice();
+
+    //Add elements to item container
+    itemElement.appendChild(itemName);
+    itemElement.appendChild(itemDesc);
+    itemElement.appendChild(itemPrice);
+
+    return itemElement;
 }
+
+const starterItems = items.filter(item => item.getCategory() === "Starter");
+const mainItems = items.filter(item => item.getCategory() === "Main");
+const dessertItems = items.filter(item => item.getCategory() === "Dessert");
+
+const containerElement = document.createElement("div");
+containerElement.classList.add("menu-container");
+
+const menuTitle = document.createElement("h3");
+menuTitle.classList.add("menu-title");
+menuTitle.textContent = "Menu";
+
+const menuContent = document.createElement("div");
+menuContent.classList.add("menu-content");
+
+containerElement.appendChild(menuTitle);
+containerElement.appendChild(menuContent);
+
+menuContent.appendChild(createCategory("Starters", starterItems));
+menuContent.appendChild(createCategory("Mains", mainItems));
+menuContent.appendChild(createCategory("Desserts", dessertItems));
+
+function loadMenu(contentElement) {
+    contentElement.appendChild(containerElement);
+}
+
+export {loadMenu}
+
