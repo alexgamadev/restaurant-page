@@ -49,7 +49,7 @@ const mainItems = items.filter(item => item.getCategory() === "Main");
 const dessertItems = items.filter(item => item.getCategory() === "Dessert");
 
 const containerElement = document.createElement("div");
-containerElement.classList.add("menu-container");
+containerElement.classList.add("container");
 
 const menuTitle = document.createElement("h3");
 menuTitle.classList.add("menu-title");
