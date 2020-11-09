@@ -9,7 +9,7 @@ body {
 }
 
 body  {
-    background: #000 url(../background-image.jpg) no-repeat center center fixed;
+    background: #000 url(https://alexgamadev.github.io/background-image.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
