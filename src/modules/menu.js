@@ -67,10 +67,7 @@ menuContent.appendChild(createCategory("Desserts", dessertItems));
 
 function loadMenu(contentElement) {
     contentElement.appendChild(containerElement);
-    contentElement.style["justify-content"] = "space-between";
-    if(window.matchMedia("(min-width: 1400px)").matches){
-        contentElement.style["justify-content"] = "flex-start";
-    }
+    contentElement.style["justify-content"] = "flex-start";
 }
 
 export {loadMenu}
