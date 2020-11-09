@@ -13,6 +13,7 @@ timesElement.innerHTML =
 const loadHome = (contentElement) => {
     contentElement.appendChild(taglineElement);
     contentElement.appendChild(timesElement);
+    contentElement.style["justify-content"] = "space-between";
 }
 
 export {loadHome}

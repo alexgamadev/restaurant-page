@@ -50,9 +50,9 @@ const dessertItems = items.filter(item => item.getCategory() === "Dessert");
 
 const containerElement = document.createElement("div");
 containerElement.classList.add("container");
+containerElement.classList.add("menu");
 
 const menuTitle = document.createElement("h3");
-menuTitle.classList.add("menu-title");
 menuTitle.textContent = "Menu";
 
 const menuContent = document.createElement("div");
@@ -67,6 +67,10 @@ menuContent.appendChild(createCategory("Desserts", dessertItems));
 
 function loadMenu(contentElement) {
     contentElement.appendChild(containerElement);
+    contentElement.style["justify-content"] = "space-between";
+    if(window.matchMedia("(min-width: 1400px)").matches){
+        contentElement.style["justify-content"] = "flex-start";
+    }
 }
 
 export {loadMenu}
